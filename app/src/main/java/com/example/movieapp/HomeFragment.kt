@@ -9,28 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
+import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.util.Log
-import android.view.Window;
-import android.widget.ImageView;
+import android.view.Window
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-//import com.azhar.moviedb.fragment.FragmentFavorite;
-//import com.azhar.moviedb.fragment.FragmentMovie;
-//import com.azhar.moviedb.fragment.FragmentTV;
-//import com.azhar.moviedb.R;
-//import com.azhar.moviedb.utils.BottomBarBehavior;
-import com.gauravk.bubblenavigation.BubbleNavigationLinearView;
-import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,7 +56,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         viewOfLayout = inflater.inflate(R.layout.fragment_home, container, false)
         viewOfLayout.popular_movies.layoutManager = LinearLayoutManager(
