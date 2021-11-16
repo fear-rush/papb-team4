@@ -23,12 +23,12 @@ interface MovieDao {
     @Delete
     fun delete(movie: Movie)
 
-    @Query("DELETE FROM movie_table")
+    @Query("DELETE FROM Movie")
     fun deleteAllMovies()
 
-    @Query("SELECT * FROM movie_table ORDER BY movieId ASC")
+    @Query("SELECT * FROM Movie ORDER BY id ASC")
     fun getAllMovies(): LiveData<List<Movie>>
 
-    @Query("SELECT COUNT(title) FROM MovieEntity")
+    @Query("SELECT COUNT(title) FROM Movie")
     fun getMovieCount(): Int
 }

@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         // function to check if database is empty, if so, call onError
-        fun checkDatabase() {
-            val db = Room.databaseBuilder(applicationContext, MovieDatabase::class.java, "movies").build()
-            val movieDao = db.movieDao()
-            if (movieDao.getMovieCount() == 0) {
-                onError()
-            }
-        }
+//        fun checkDatabase() {
+//            val db = Room.databaseBuilder(applicationContext, MovieDatabase::class.java, "movies").build()
+//            val movieDao = db.movieDao()
+//            if (movieDao.getMovieCount() == 0) {
+//                onError()
+//            }
+//        }
 
         val db = Room.databaseBuilder(
             applicationContext,
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         MoviesRepository.getPopularMovies(
             onSuccess = ::onPopularMoviesFetched,
-            onError = ::checkDatabase
+            onError = ::onError
         )
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
