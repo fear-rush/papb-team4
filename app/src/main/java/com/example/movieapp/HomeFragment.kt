@@ -146,6 +146,8 @@ class HomeFragment : Fragment() {
     ).allowMainThreadQueries().build()
     }
 
+    // movie category db
+
     val movCatDb = activity?.let {
         Room.databaseBuilder(
             it,
