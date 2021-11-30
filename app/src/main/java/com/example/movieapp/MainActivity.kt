@@ -1,5 +1,6 @@
 package com.example.movieapp
 
+import android.app.NotificationManager
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
                 movCatDb.movieCategoryDao().insertMovieCategory(MovieCategory(movie.id, "popular"))
             }
             db.movieDao().insertAll(movies)
+            val notificationManager = ContextCompat.getSystemService(
+                applicationContext,
+                NotificationManager::class.java
+            ) as NotificationManager
+            notificationManager.sendNotification("Database berhasil diisi", applicationContext)
         }
         fun onTopRatedMoviesFetched(movies: List<Movie>) {
             Log.d("MainActivity", "Movies: $movies")
@@ -56,6 +62,11 @@ class MainActivity : AppCompatActivity() {
                 movCatDb.movieCategoryDao().insertMovieCategory(MovieCategory(movie.id, "top_rated"))
             }
             db.movieDao().insertAll(movies)
+            val notificationManager = ContextCompat.getSystemService(
+                applicationContext,
+                NotificationManager::class.java
+            ) as NotificationManager
+            notificationManager.sendNotification("Database berhasil diisi", applicationContext)
         }
 
 //        fun checkPopularMoviesOnDb(){

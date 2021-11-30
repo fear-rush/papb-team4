@@ -1,6 +1,8 @@
 package com.example.movieapp
 
 import android.app.Activity
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +12,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.util.Log
 import android.view.Window
 import android.widget.Toast
@@ -93,14 +97,46 @@ class HomeFragment : Fragment() {
             onSuccess = ::onTopRatedMoviesFetched,
             onError = ::checkDbForTopRatedMovies
         )
+
+
+        createChannel(
+            "Movie_Notif",
+            "Movie"
+        )
         Log.d(TAG, "fragment home berhasil")
         return viewOfLayout
+
     }
 
     fun onError() {
         Toast.makeText(activity, getString(R.string.error_fetch_movies), Toast.LENGTH_SHORT)
             .show()
     }
+
+    private fun createChannel(channelId: String, channelName: String) {
+        // TODO: Step 1.6 START create a channel
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationChannel = NotificationChannel(
+                channelId,
+                channelName,
+                // TODO: Step 2.4 change importance
+                NotificationManager.IMPORTANCE_LOW
+            )
+            // TODO: Step 2.6 disable badges for this channel
+
+            notificationChannel.enableLights(true)
+            notificationChannel.lightColor = Color.RED
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = "Time for breakfast"
+
+            val notificationManager = requireActivity().getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+        // TODO: Step 1.6 END create channel
+    }
+
 
 
     val db = activity?.let {
